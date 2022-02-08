@@ -1,5 +1,5 @@
 {
-  "name": "jobs-dps-jupyter-extension",
+  "name": "@maap-project/jobs-dps-jupyter-extension",
   "version": "1.0.0",
   "description": "Frontend Jupyter extension for managing DPS jobs.",
   "keywords": [

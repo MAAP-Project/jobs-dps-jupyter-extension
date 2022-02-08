@@ -1,0 +1,95 @@
+{
+  "name": "jobs-dps-jupyter-extension",
+  "version": "1.0.0",
+  "description": "Frontend Jupyter extension for managing DPS jobs.",
+  "keywords": [
+    "jupyter",
+    "jupyterlab",
+    "jupyterlab-extension"
+  ],
+  "homepage": "https://github.com/MAAP-Project/jobs-dps-jupyter-extension.git",
+  "bugs": {
+    "url": "https://github.com/MAAP-Project/jobs-dps-jupyter-extension/issues"
+  },
+  "license": "BSD-3-Clause",
+  "author": {
+    "name": "MAAP JPL Dev",
+    "email": ""
+  },
+  "files": [
+    "lib/**/*.{d.ts,eot,gif,html,jpg,js,js.map,json,png,svg,woff2,ttf}",
+    "style/**/*.{css,js,eot,gif,html,jpg,json,png,svg,woff2,ttf}"
+  ],
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "style": "style/index.css",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MAAP-Project/jobs-dps-jupyter-extension.git"
+  },
+  "scripts": {
+    "build": "jlpm run build:lib && jlpm run build:labextension:dev",
+    "build:prod": "jlpm run clean && jlpm run build:lib && jlpm run build:labextension",
+    "build:labextension": "jupyter labextension build .",
+    "build:labextension:dev": "jupyter labextension build --development True .",
+    "build:lib": "tsc",
+    "clean": "jlpm run clean:lib",
+    "clean:lib": "rimraf lib tsconfig.tsbuildinfo",
+    "clean:labextension": "rimraf jobs_dps_jupyter_extension/labextension",
+    "clean:all": "jlpm run clean:lib && jlpm run clean:labextension",
+    "eslint": "eslint . --ext .ts,.tsx --fix",
+    "eslint:check": "eslint . --ext .ts,.tsx",
+    "install:extension": "jlpm run build",
+    "watch": "run-p watch:src watch:labextension",
+    "watch:src": "tsc -w",
+    "watch:labextension": "jupyter labextension watch ."
+  },
+  "dependencies": {
+    "@jupyterlab/application": "^3.1.0",
+    "@jupyterlab/launcher": "^3.2.9",
+    "@reduxjs/toolkit": "^1.7.2",
+    "core-js": "^3.21.0",
+    "bootstrap": "^5.1.3",
+    "react-bootstrap": "^2.1.2",
+    "react-bootstrap-icons": "^1.7.2",
+    "react-icons": "^4.3.1",
+    "react-json-view": "^1.21.3",
+    "react-select": "^5.2.2",
+    "react-split-pane": "^0.1.92",
+    "react-table": "^7.7.0",
+    "react-tooltip": "^4.2.21"
+  },
+  "devDependencies": {
+    "@jupyterlab/builder": "^3.1.0",
+    "@types/react-table": "^7.7.9",
+    "@typescript-eslint/eslint-plugin": "^4.8.1",
+    "@typescript-eslint/parser": "^4.8.1",
+    "eslint": "^7.14.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.1.1",
+    "rimraf": "^3.0.2",
+    "typescript": "~4.1.3"
+  },
+  "sideEffects": [
+    "style/*.css",
+    "style/index.js"
+  ],
+  "styleModule": "style/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "jupyterlab": {
+    "extension": true,
+    "outputDir": "jobs_dps_jupyter_extension/labextension"
+  },
+  "jupyter-releaser": {
+    "hooks": {
+      "before-build-npm": [
+        "python -m pip install jupyterlab~=3.1",
+        "jlpm"
+      ]
+    }
+  }
+}

@@ -1,6 +1,6 @@
 {
   "name": "@maap-jupyterlab/jobs-dps-jupyter-extension",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Frontend Jupyter extension for managing DPS jobs.",
   "keywords": [
     "jupyter",
@@ -24,7 +24,7 @@
     "url": "https://github.com/MAAP-Project/jobs-dps-jupyter-extension.git"
   },
   "scripts": {
-    "build": "jlpm run build:lib && jlpm run build:labextension:dev",
+    "build": "cp ./src/react-table-config.d.ts ./node_modules/@types/react-table && jlpm run build:lib && jlpm run build:labextension:dev",
     "build:prod": "jlpm run clean && jlpm run build:lib && jlpm run build:labextension",
     "build:labextension": "jupyter labextension build .",
     "build:labextension:dev": "jupyter labextension build --development True .",
@@ -74,6 +74,9 @@
     "style/*.css",
     "style/index.js"
   ],
+  "browser": {
+    "@maap-jupyterlab/jobs-dps-jupyter-extension": false
+  },
   "styleModule": "style/index.js",
   "publishConfig": {
     "access": "public"

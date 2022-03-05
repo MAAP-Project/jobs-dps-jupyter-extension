@@ -1,6 +1,6 @@
 {
   "name": "@maap-jupyterlab/jobs-dps-jupyter-extension",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": "Frontend Jupyter extension for managing DPS jobs.",
   "keywords": [
     "jupyter",
@@ -14,7 +14,7 @@
   "license": "Apache 2.0",
   "author": {
     "name": "MAAP JPL Dev",
-    "email": ""
+    "email": "marjorie.j.lucas@jpl.nasa.gov"
   },
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -36,7 +36,6 @@
     "eslint": "eslint . --ext .ts,.tsx --fix",
     "eslint:check": "eslint . --ext .ts,.tsx",
     "install:extension": "jlpm run build",
-    "prebuild": "cp ./@types/index.d.ts ./node_modules/@types/react-table/",
     "watch": "run-p watch:src watch:labextension",
     "watch:src": "tsc -w",
     "watch:labextension": "jupyter labextension watch ."
@@ -44,7 +43,6 @@
   "dependencies": {
     "@jupyterlab/application": "^3.1.0",
     "@jupyterlab/launcher": "^3.2.9",
-    "@maap-jupyterlab/jobs-dps-jupyter-extension": "file:maap-jupyterlab-jobs-dps-jupyter-extension-1.0.1.tgz",
     "@reduxjs/toolkit": "^1.7.2",
     "bootstrap": "^5.1.3",
     "core-js": "^3.21.0",
@@ -56,12 +54,12 @@
     "react-json-view": "^1.21.3",
     "react-select": "^5.2.2",
     "react-split-pane": "^0.1.92",
-    "react-table": "^7.7.0",
+    "react-table": "7.7.0",
     "react-tooltip": "^4.2.21"
   },
   "devDependencies": {
     "@jupyterlab/builder": "^3.1.0",
-    "@types/react-table": "^7.7.9",
+    "@types/react-table": "7.7.0",
     "@typescript-eslint/eslint-plugin": "^4.8.1",
     "@typescript-eslint/parser": "^4.8.1",
     "eslint": "^7.14.0",
@@ -76,9 +74,6 @@
     "style/*.css",
     "style/index.js"
   ],
-  "browser": {
-    "@maap-jupyterlab/jobs-dps-jupyter-extension": false
-  },
   "styleModule": "style/index.js",
   "publishConfig": {
     "access": "public"

@@ -20,6 +20,7 @@ const extension: JupyterFrontEndPlugin<void> = {
   autoStart: true,
   optional: [ILauncher],
   activate: (app: JupyterFrontEnd, launcher: ILauncher) => {
+    console.log("Jobs activated!")
     const { commands } = app;
     const command = CommandIDs.create;
     commands.addCommand(command, {
